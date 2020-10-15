@@ -19,8 +19,12 @@ class Application
         resp.write "#{item}\n"
       end
     elsif req.path.match(/add/)
-      @@items.each do |item|
-        resp.write "#{item}\n"
+      search_term = req.params["q"]
+ 
+      if @@items.include?(search_term)
+        resp.write "#{search_term} is one of our items"
+      else
+        resp.write "Couldn't find #{search_term}"
       end
     else
       resp.write "Path Not Found"
