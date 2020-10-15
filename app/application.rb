@@ -18,8 +18,8 @@ class Application
       @@cart.each do |item|
         resp.write "#{item}\n"
       end
-    elsif req.path.match(/items/)
-      @@items.each do |item|
+    elsif req.path.match(/add/)
+      add_item = req.params["item"]
         resp.write "#{item}\n"
       end
     else
